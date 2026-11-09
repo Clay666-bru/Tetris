@@ -31,7 +31,7 @@ Juego de bloques que caen, hecho con **Flutter** para Android. Tiene un menú co
 - **Caída rápida**: mantener presionado el botón ↓ acelera la caída (80 ms por paso en lugar de 600 ms).
 - **Animación al borrar líneas** antes de que las filas de arriba bajen.
 - **Pausa / reanudar** y botón de reinicio.
-- **Puntajes**: cada línea completa suma **100 puntos**. Al terminar una partida se guarda el puntaje en el teléfono (`shared_preferences`) y el botón **SCORES** muestra los últimos 5.
+- **Puntajes**: cada línea completa suma **100 puntos**. Al terminar una partida se guarda el puntaje en el teléfono (`shared_preferences`) y el botón **SCORES** muestra los 5 mejores, de mayor a menor.
 - Orientación bloqueada en **vertical**.
 
 ## Cómo se juega

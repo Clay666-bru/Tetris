@@ -176,12 +176,16 @@ class _GameBoardState extends State<GameBoard> {
 
   Future<void> _saveScore(int finalScore) async {
     final prefs = await SharedPreferences.getInstance();
-    List<String> scores = prefs.getStringList('high_scores') ?? [];
-    scores.insert(0, finalScore.toString());
-    if (scores.length > 5) {
-      scores = scores.sublist(0, 5);
-    }
-    await prefs.setStringList('high_scores', scores);
+    // Guardamos solo los 5 mejores puntajes, de mayor a menor
+    final scores = (prefs.getStringList('high_scores') ?? [])
+        .map((s) => int.tryParse(s) ?? 0)
+        .toList()
+      ..add(finalScore)
+      ..sort((a, b) => b.compareTo(a));
+    await prefs.setStringList(
+      'high_scores',
+      scores.take(5).map((s) => s.toString()).toList(),
+    );
   }
 
   void spawnPiece() {
